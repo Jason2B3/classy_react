@@ -13,7 +13,7 @@ const Users = () => {
   const [showUsers, setShowUsers] = useState(true);
 
   const toggleUsersHandler = () => {
-    setShowUsers((curState) => !curState);
+    setShowUsers((curState) => !curState); // toggles T/F
   };
 
   const usersList = (
@@ -21,7 +21,7 @@ const Users = () => {
       {DUMMY_USERS.map((user) => (
         <User key={user.id} name={user.name} />
       ))}
-    </ul>
+    </ul> // will be used in the return JSX section
   );
 
   return (
