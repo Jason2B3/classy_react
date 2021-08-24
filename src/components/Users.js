@@ -25,7 +25,7 @@ class Users extends Component {
   render() {
     const usersList = (
       <ul>
-        {this.DUMMY_USERS.map((user) => (
+        {this.props.users.map((user) => (
           <User key={user.id} name={user.name} />
         ))}
       </ul> // will be used in the return JSX section
