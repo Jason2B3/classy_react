@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Hero(props) {
-  // if(props.name==="Joker") throw new Error()
+function Hero({name}) {
+  if(name==="Joker") throw new Error()
   return (
-    <p>{props.name}</p>
+    <p>{name}</p>
   )
 }
 
