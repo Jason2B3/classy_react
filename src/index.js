@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import BBB from "./store/contextFile"
-
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import AuthContext, { AuthProvider } from "./store/AuthContext";
 ReactDOM.render(
-  <BBB>
+  //% each child within these AuthProvider tags has access to the distribution object
+  <AuthProvider> 
     <App />
-  </BBB>
-, document.getElementById('root')
+  </AuthProvider>,
+  document.getElementById("root")
 );
