@@ -1,12 +1,13 @@
 import { Fragment, useState, useEffect, Component } from "react";
 import styles from "./UserFinder.module.css";
 import Users from "./Users";
-import AuthContext from "../store/AuthContext" //$ bring in context variables PART 1
+import AuthContext from "../store/AuthContext"; //$ bring in context variables PART 1
+import ErrorBoundary from "./ErrorBoundary";
 
 class UserFinder extends Component {
-  // static contextType = AuthContext; //$ bring in context variables PART 2
+  static contextType = AuthContext; //$ bring in context variables PART 2
   constructor() {
-    //! The context API variables are not defined when the constructor is initially parsed
+    // The context API variables are not defined when the constructor is initially parsed
     super(); // need for "this" usage
     this.state = {
       // starting values will be updated
@@ -14,13 +15,13 @@ class UserFinder extends Component {
       searchTerm: "",
     };
   }
-  //% Run on startup only
+  // Run on startup only
   componentDidMount() {
-    //! The context API variables are defined here though
+    // The context API variables are defined here though
     this.setState({ filteredUsers: this.context.users });
   }
 
-  //% Run if the searchTerm changes
+  // Run if the searchTerm changes
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
@@ -38,15 +39,15 @@ class UserFinder extends Component {
   }
   //# Methods go here
   render() {
-    console.log(this.context.users)
-    console.log(this.context.isAuthenticated)
     return (
       <div className={styles.finder}>
         <input type="search" onChange={this.searchChangeHandler.bind(this)} />
-        <Users users={this.state.filteredUsers} />
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </div>
     );
   }
 }
-UserFinder.contextType= AuthContext
+UserFinder.contextType = AuthContext;
 export default UserFinder;

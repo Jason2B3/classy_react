@@ -6,16 +6,17 @@ import classes from "./Users.module.css";
 class Users extends Component {
   constructor() {
     super(); // need for "this" keyword usage
-    this.state = { showUsers: true };
-    
+    this.state = { showUsers: true, hasError: false };
   }
   //~ ----------------------------------------------
   toggleUsersHandler() {
-    // Toggle the value of showUsers
-    // This is an event handler, so we'll need to rebind "this" later on
-    this.setState(() => {
-      return { showUsers: !this.state.showUsers };
-    });
+    //! ERROR 2:
+    //! We rig the toggle button handler to throw an error on purpose
+    try {
+      throw new Error("Shouldn't have pressed that, bucko");
+    } catch (error) {
+      this.setState({ hasError: true });
+    }
   }
   //~ ----------------------------------------------
   render() {
@@ -26,10 +27,13 @@ class Users extends Component {
         ))}
       </ul> // will be used in the return JSX section
     );
+    if (this.state.hasError) {
+      return <h2>A wild error has appeared inside an event handler!</h2>;
+    }
     return (
       <div className={classes.users}>
         <button onClick={this.toggleUsersHandler.bind(this)}>
-          {this.state.showUsers ? "Hide" : "Show"} Users
+          #2: Throw a deliberate error 
         </button>
         {this.state.showUsers && usersList}
       </div>
