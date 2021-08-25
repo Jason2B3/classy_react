@@ -1,8 +1,9 @@
 import UserFinder from "./components/UserFinder";
-import React, { useContext } from "react";
-import { AAA } from "./store/contextFile";
+import React from "react";
+import { useCustomContextHook } from "./store/contextFile";
+
 function App() {
-  const { theme } = useContext(AAA);
+  const { theme } = useCustomContextHook();
   console.log("Selected theme is:", theme);
   return (
     <div>

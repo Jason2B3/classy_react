@@ -1,5 +1,6 @@
-import React, { useState, createContext } from "react";
-export const AAA = createContext();
+import React, { useState, createContext, useContext } from "react";
+const AAA = createContext();
+export const useCustomContextHook= () => useContext(AAA)
 
 export default function BBB(props) {
   const [theme, setTheme] = useState("dark");
