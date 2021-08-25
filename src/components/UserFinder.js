@@ -4,7 +4,7 @@ import Users from "./Users";
 import AuthContext from "../store/AuthContext" //$ bring in context variables PART 1
 
 class UserFinder extends Component {
-  static contextType = AuthContext; //$ bring in context variables PART 2
+  // static contextType = AuthContext; //$ bring in context variables PART 2
   constructor() {
     //! The context API variables are not defined when the constructor is initially parsed
     super(); // need for "this" usage
@@ -48,5 +48,5 @@ class UserFinder extends Component {
     );
   }
 }
-// UserFinder.contextType= AuthContext
+UserFinder.contextType= AuthContext
 export default UserFinder;
