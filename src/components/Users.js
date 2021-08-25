@@ -7,6 +7,9 @@ class Users extends Component {
   constructor() {
     super(); // need for "this" keyword usage
     this.state = { showUsers: true, hasError: false };
+    //! ERROR 1: We create an error as soon as this component runs
+    //! IRL, an error would occur due to a botched API call or something, but the outcome's the same regardless
+    throw new Error("I crashed!");
   }
   //~ ----------------------------------------------
   toggleUsersHandler() {

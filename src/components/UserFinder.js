@@ -40,12 +40,12 @@ class UserFinder extends Component {
   //# Methods go here
   render() {
     return (
-      <div className={styles.finder}>
-        <input type="search" onChange={this.searchChangeHandler.bind(this)} />
-        <ErrorBoundary>
+      <ErrorBoundary>
+        <div className={styles.finder}>
+          <input type="search" onChange={this.searchChangeHandler.bind(this)} />
           <Users users={this.state.filteredUsers} />
-        </ErrorBoundary>
-      </div>
+        </div>
+      </ErrorBoundary>
     );
   }
 }
